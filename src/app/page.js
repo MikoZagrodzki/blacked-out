@@ -1,27 +1,41 @@
-'use client'
-import Footer from "@/components/Footer1";
-// import Footer from "@/components/Footer2";
-import Intro from "@/components/Intro";
-import { useEffect } from "react";
+"use client"
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Lenis from 'lenis';
 
-export default function Home() {
+const Intro = dynamic(() => import('@/components/Intro'), {
+  ssr: false,
+});
 
-  useEffect( () => {
-    const lenis = new Lenis()
+const Footer = dynamic(() => import('@/components/Footer1'), {
+  ssr: false,
+});
+
+export default function Home() {
+  const [introLoaded, setIntroLoaded] = useState(false);
+
+  useEffect(() => {
+    const lenis = new Lenis();
 
     function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf)
-  }, [])
+    requestAnimationFrame(raf);
+
+    // To simulate that Intro component is loaded, use an effect inside Intro component to set this
+  }, []);
+
+  // Set introLoaded to true when the Intro component has mounted
+  const handleIntroLoaded = () => {
+    setIntroLoaded(true);
+  };
 
   return (
     <main>
-      <Intro />
-      <Footer />
+      <Intro onLoad={handleIntroLoaded} />
+      {introLoaded && <Footer />}
     </main>
   );
 }

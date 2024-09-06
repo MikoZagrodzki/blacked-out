@@ -1,9 +1,19 @@
-import React from 'react'
+'use client';
+import { Canvas } from '@react-three/fiber'
+import Model from './Model';
+import { Environment } from '@react-three/drei'
+import { useEffect } from 'react';
+export default function Intro({ onLoad }) {
+  useEffect(() => {
+    // Signal that Intro has loaded
+    if (onLoad) onLoad();
+  }, [onLoad]);
 
-export default function Intro() {
   return (
-    <div className='h-screen flex text-[2vw] items-center justify-center'>
-        <h2 className='max-w-[45%] text-center leading-none'>This is an example of a sticky footer made with CSS.</h2>
-    </div>
+    <Canvas style={{height:'100vh',background: '#000000', position:'relative'}}>
+        <Model />
+        <directionalLight intensity={2} position={[0, 2, 3]}/>
+        <Environment preset="city" />
+    </Canvas>
   )
 }
