@@ -97,8 +97,8 @@ const Nav = ({ref}) => {
       {/* <motion.div className='flex flex-col gap-2' variants={sectionEaseInAnimation} initial='hidden' animate='visible' whileInView='visible' viewport={{ margin: '2250px' }} > */}
       <motion.div className='flex flex-col gap-2 w-1/2 sm:w-auto ' style={{x:X_OFFSET_COLUMN_1, opacity:opacity, scale: scale}} >
       <h3 className='mb-2 uppercase text-[#ffffff80]'>About</h3>
-        <Link className='animate-bounce' href='https://www.youtube.com/' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
-        <button className='text-left' onClick={()=>copyToClipboard(CONTRACT)}>
+        <Link className='animate-bounce font-bold' href='https://www.youtube.com/' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
+        <button className='text-left font-bold' onClick={()=>copyToClipboard(CONTRACT)}>
           Copy CA
         </button>
       </motion.div>
@@ -106,7 +106,7 @@ const Nav = ({ref}) => {
         <h3 className='mb-2 uppercase text-[#ffffff80]'>Links</h3>
         {/* {LINKS.map((item, index)=>{return <Link key={index} href={item.href} target='_blank' alt={item.title}>{item.title}</Link>})} */}
         <div className='flex flex-row flex-wrap sm:flex-row gap-2 sm:gap-10'>
-          {LINKS.map((item, index)=>{return <Link key={index} href={item.href} target='_blank' alt={item.title} className='hover:scale-105 hover:brightness-125'>{!item.icon?item.title:<Image src={item.icon} height={isSmallScreen?25:40} width={isSmallScreen?25:40} alt={item.title}/>}</Link>})}
+          {LINKS.map((item, index)=>{return <Link key={index} href={item.href} target='_blank' alt={item.title} className='hover:scale-105 hover:brightness-125 '>{!item.icon?item.title:<Image src={item.icon} height={isSmallScreen?25:40} width={isSmallScreen?25:40} alt={item.title}/>}</Link>})}
         </div>
       </motion.div>
     </div>
