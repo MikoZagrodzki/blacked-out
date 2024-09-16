@@ -3,96 +3,112 @@ import styles from './Scrolling.module.css'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Marquee from './Marquee';
+import Link from 'next/link';
+import useScreenSize from '@/hooks/useScreenSize';
+import Image from 'next/image';
+import { useTransform, motion, useScroll, scrollYProgress } from 'framer-motion'
 
 
 
+const LINKS = [
+  { title: 'Dextools', href: 'https://www.dextools.io/app/en/ether/pair-explorer/0x805846a64026f1c620d5ff25cad336e13fb3d3a3?t=1726246146340', icon:'/icons/dextools.png' },
+  { title: 'dexscreener', href: 'https://dexscreener.com/ethereum/0xb74010Af81aDef67961A699eE37877eE397DFf57', icon:'/icons/dexscreener.png' },
+  { title: 'WeChat', href: 'https://www.wechat.com/', icon:'/icons/wechat.png' },
+  { title: 'TG', href: 'https://t.me/schnozeth', icon:'/icons/telegram.png' },
+  { title: 'X', href: 'https://x.com/schnozeth', icon:'/icons/x.png' },
+];
+const CONTRACT = '0xb74010Af81aDef67961A699eE37877eE397DFf57'
 
-export default function Content() {
+
+export default function Content({ref}) {
+  const forwardedRef = useRef(ref)
   return (
-    <div className='bg-[#ec7804] text-black pt-8 px-12 h-full w-full flex flex-col justify-end gap-40 sm:gap-0 sm:justify-between relative overflow-x-clip'>
-        <Section1 />
+    <div className='bg-[#ec7804] text-black px-12 h-full w-full flex flex-col justify-end gap-20  sm:gap-0 sm:justify-between relative overflow-x-clip'>
+        <Section1 forwardedRef={ref}/>
         <Section2 />
     </div>
   )
 }
 
-const Section1 = () => {
-    return (
-        <div>
-            <Nav />
-        </div>
-    )
-}
+const Section1 = ({ ref }) => {
+  const forwardedRef = useRef(ref)
+  return (
+    <div className='pt-20 mt-20 h-2/3 justify-center flex items-end sm:items-start'>
+      {/* <Nav ref={forwardedRed}/> */}
+      <Nav ref={forwardedRef}/>
+    </div>
+  );
+};
 
 const Section2 = () => {
 
-    const firstText = useRef(null);
-    const secondText = useRef(null);
-    const slider = useRef(null);
-    let xPercent = 0;
-    let direction = -1;
-  
-    useEffect( () => {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.to(slider.current, {
-        scrollTrigger: {
-          trigger: document.documentElement,
-          scrub: 0.25,
-          start: 0,
-          end: window.innerHeight,
-          onUpdate: e => direction = e.direction * -1
-        },
-        x: "-500px",
-      })
-      requestAnimationFrame(animate);
-    }, [])
-  
-    const animate = () => {
-      if(xPercent < -100){
-        xPercent = 0;
-      }
-      else if(xPercent > 0){
-        xPercent = -100;
-      }
-      gsap.set(firstText.current, {xPercent: xPercent})
-      gsap.set(secondText.current, {xPercent: xPercent})
-      requestAnimationFrame(animate);
-      xPercent += 0.1 * direction;
-    }
+
 
     return (
-        // <div className='flex justify-between items-end font-sans'>
-        //     <h1 className='text-[14vw] leading-[0.8] mt-10 font-custom font-bold'>$ORANG</h1>
-        //     <p>©copyright</p>
-        // </div>
 
-        // <div className={styles.sliderContainer}>
-        //     <div ref={slider} className={styles.slider}>
-        //     {/* <p ref={firstText}>$ORANG$ORANG$ORANG  </p>
-        //     <p ref={secondText}>$ORANG$ORANG$ORANG  </p> */}
-        //     {/* <img ref={firstText} src='/medias/OrangScroll1.png' alt='orang'/> */}
-        //     {/* <img ref={secondText} src='/medias/OrangScroll2.png' alt='orang'/> */}
-        //     </div>
-        // </div>
+        <Marquee/>
 
-            <Marquee/>
     )
 }
 
-const Nav = () => {
-    return (
-        <div className='flex shrink-0 gap-20'>
-            <div className='flex flex-col gap-2'>
-            <h3 className='mb-2 uppercase text-[#ffffff80]'>About</h3>
-                <p>Whos ORANG</p>
-                <p>Copy CA</p>
-            </div>
-            <div className='flex flex-col gap-2'>
-                <h3 className='mb-2 uppercase text-[#ffffff80]'>Links</h3>
-                <p>Dextools</p>
-                <p>Utility</p>
-                <p>X</p>
-            </div>
+const Nav = ({ref}) => {
+  const forwardedRef = useRef(ref)
+
+  const { isSmallScreen, windowSize } = useScreenSize(600);
+
+
+  const { scrollYProgress } = useScroll({
+      target: forwardedRef,
+      offset: ['start end', 'end start']
+  })
+
+
+  const sectionEaseInAnimation = {
+      hidden: { scale: 1.3, opacity: 0, },
+      visible: {
+        scale: 1,
+        opacity: 1,
+        transition: {
+          duration: 0.4,
+          ease: 'easeInOut',
+        },
+      },
+      
+    };
+
+  //   const faqOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [0, 0, 1]);
+
+  const X_OFFSET_COLUMN_1 = useTransform(scrollYProgress, [0.2,  0.6], ['-150%', '0%']);
+  const X_OFFSET_COLUMN_2 = useTransform(scrollYProgress, [0.2,  0.6], ['150%', '0%']);
+  const opacity = useTransform(scrollYProgress, [0.55,  0.6], ['0%', '100%']);
+  const scale = useTransform(scrollYProgress, [0.5, 0.55], [' 0% ', ' 100% ']);
+
+  const copyToClipboard = async (textToCopy) => {
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+      }
+    };
+
+//fav
+  return (
+    <div className='flex shrink-0 gap-20 sm:gap-40 mb-10 sm:mb-0 lg:mt-10 w-full '>
+      {/* <motion.div className='flex flex-col gap-2' variants={sectionEaseInAnimation} initial='hidden' animate='visible' whileInView='visible' viewport={{ margin: '2250px' }} > */}
+      <motion.div className='flex flex-col gap-2 w-1/2 sm:w-auto ' style={{x:X_OFFSET_COLUMN_1, opacity:opacity, scale: scale}} >
+      <h3 className='mb-2 uppercase text-[#ffffff80]'>About</h3>
+        <Link className='animate-bounce' href='https://www.youtube.com/' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
+        <button className='text-left' onClick={()=>copyToClipboard(CONTRACT)}>
+          Copy CA
+        </button>
+      </motion.div>
+      <motion.div className='flex flex-col gap-2 w-1/2 sm:w-auto  ' style={{x:X_OFFSET_COLUMN_2, opacity:opacity, scale: scale}}>
+        <h3 className='mb-2 uppercase text-[#ffffff80]'>Links</h3>
+        {/* {LINKS.map((item, index)=>{return <Link key={index} href={item.href} target='_blank' alt={item.title}>{item.title}</Link>})} */}
+        <div className='flex flex-row flex-wrap sm:flex-row gap-2 sm:gap-10'>
+          {LINKS.map((item, index)=>{return <Link key={index} href={item.href} target='_blank' alt={item.title} className='hover:scale-105 hover:brightness-125'>{!item.icon?item.title:<Image src={item.icon} height={isSmallScreen?25:40} width={isSmallScreen?25:40} alt={item.title}/>}</Link>})}
         </div>
-    )
+      </motion.div>
+    </div>
+  );
 }

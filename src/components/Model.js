@@ -8,10 +8,14 @@ export default function Model() {
     const { viewport } = useThree()
     const torus = useRef(null);
     
+    const RANDOM_ROTATION_Y = (Math.random() * 0.04) - 0.02; // Generates a random value between -0.02 and 0.02
+    const RANDOM_ROTATION_X = (Math.random() * 0.01) - 0.005; // Generates a random value between -0.02 and 0.02
+
     useFrame( () => {
-        torus.current.rotation.y -= 0.02
-        torus.current.rotation.x -= 0.005
+        torus.current.rotation.y -= RANDOM_ROTATION_Y
+        torus.current.rotation.x -= RANDOM_ROTATION_X
     })
+
 
     // const materialProps = useControls({
     //     thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
@@ -36,7 +40,7 @@ export default function Model() {
     return (
         <group scale={viewport.width / 3.75} >
             <Text font={'/fonts/PPNeueMontreal-Bold.otf'} position={[0, 0, -1]} fontSize={0.5} color="rgb(255,69,0)" anchorX="center" anchorY="middle">
-                ORANG GANG
+                $ORANG GANG
             </Text>
             <mesh ref={torus} {...nodes['orang1']}>
                 <MeshTransmissionMaterial {...materialProps}/>

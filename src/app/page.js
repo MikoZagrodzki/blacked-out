@@ -1,7 +1,12 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import Lenis from 'lenis';
+import Head from "next/head";
+import { useTransform, motion, useScroll } from "framer-motion";
+import scrollBar from '../styles/hideScrollingBar.module.css'
+
+
 
 const Intro = dynamic(() => import('@/components/Intro'), {
   ssr: false,
@@ -32,10 +37,22 @@ export default function Home() {
     setIntroLoaded(true);
   };
 
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+      target: container,
+      offset: ['start end', 'end start']
+  })
+
   return (
-    <main>
+    <main ref={container} className={` ${scrollBar.hideScrollbar} overflow-x-clip `}>
+      <Head>
+        <meta property='og:title' content='$ORANG' />
+        <title>$ORANG</title>
+        <meta property='og:image' content='/images/orang.png' />
+        <link rel='icon' href='/favicon.png' />
+      </Head>
       <Intro onLoad={handleIntroLoaded} />
-      {introLoaded && <Footer />}
+      {introLoaded && <Footer ref={container}/>}
     </main>
   );
 }

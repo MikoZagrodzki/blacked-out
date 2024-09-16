@@ -4,6 +4,7 @@ import Model from './Model';
 import { Environment } from '@react-three/drei'
 import { useEffect } from 'react';
 export default function Intro({ onLoad }) {
+  
   useEffect(() => {
     // Signal that Intro has loaded
     if (onLoad) onLoad();

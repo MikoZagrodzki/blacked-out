@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Content from './Content';
 
-export default function Footer() {
+export default function Footer({ref}) {
+  const forwardedRed = useRef(ref)
+
   return (
     <div 
         className='relative h-[800px]'
@@ -9,7 +11,7 @@ export default function Footer() {
     >
         <div className='relative h-[calc(100vh+800px)] -top-[100vh]'>
             <div className='h-[800px] sticky top-[calc(100vh-800px)]'>
-                <Content />
+                <Content ref={forwardedRed}/>
             </div>
         </div>
     </div>
