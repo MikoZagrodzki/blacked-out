@@ -1,10 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { MeshTransmissionMaterial, useGLTF, Text } from "@react-three/drei";
 import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
-export default function Model() {
+export default function Model({onLoad}) {
     // const { nodes } = useGLTF("/medias/torrus.glb");
-    const { nodes, materials } = useGLTF("/medias/orang3d1.glb");
+    const gltf = useGLTF("/medias/orang3d1.glb");
     const { viewport } = useThree()
     const torus = useRef(null);
     
@@ -35,6 +35,13 @@ export default function Model() {
         backside: true
       };
 
+
+      useEffect(() => {
+        if (gltf) {
+          // Call onLoad once the model has been loaded
+          if (onLoad) onLoad();
+        }
+      }, [gltf, onLoad]);
       
     
     return (
@@ -42,7 +49,7 @@ export default function Model() {
             <Text font={'/fonts/PPNeueMontreal-Bold.otf'} position={[0, 0, -1]} fontSize={0.5} color="rgb(255,69,0)" anchorX="center" anchorY="middle">
                 $ORANG GANG
             </Text>
-            <mesh ref={torus} {...nodes['orang1']}>
+            <mesh ref={torus} {...gltf.nodes['orang1']}>
                 <MeshTransmissionMaterial {...materialProps}/>
             </mesh>
             {/* <mesh
