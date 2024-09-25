@@ -21,6 +21,9 @@ const Marquee = () => {
     "/marquee/marque11.png",
     "/marquee/marque12.png",
     "/marquee/marque13.png",
+    "/marquee/marque14.png",
+    "/marquee/marque15.png",
+    "/marquee/marque16.png",
   ];
 
   const lowerMarquee = [
@@ -37,6 +40,10 @@ const Marquee = () => {
     "/marquee/marque11.png",
     "/marquee/marque12.png",
     "/marquee/marque13.png",
+    "/marquee/marque14.png",
+    "/marquee/marque15.png",
+    "/marquee/marque16.png",
+
 
   ];
 

@@ -11,13 +11,13 @@ import { useTransform, motion, useScroll, scrollYProgress } from 'framer-motion'
 
 
 const LINKS = [
-  { title: 'Dextools', href: 'https://www.dextools.io/app/en/ether/pair-explorer/0x805846a64026f1c620d5ff25cad336e13fb3d3a3?t=1726246146340', icon:'/icons/dextools.png' },
-  { title: 'dexscreener', href: 'https://dexscreener.com/ethereum/0xb74010Af81aDef67961A699eE37877eE397DFf57', icon:'/icons/dexscreener.png' },
+  { title: 'Dextools', href: 'https://www.dextools.io/', icon:'/icons/dextools.png' },
+  { title: 'dexscreener', href: 'https://dexscreener.com/ethereum/', icon:'/icons/dexscreener.png' },
   { title: 'WeChat', href: 'https://www.wechat.com/', icon:'/icons/wechat.png' },
-  { title: 'TG', href: 'https://t.me/schnozeth', icon:'/icons/telegram.png' },
-  { title: 'X', href: 'https://x.com/schnozeth', icon:'/icons/x.png' },
+  { title: 'TG', href: 'https://t.me/orangcoineth', icon:'/icons/telegram.png' },
+  { title: 'X', href: 'https://x.com/', icon:'/icons/x.png' },
 ];
-const CONTRACT = '0xb74010Af81aDef67961A699eE37877eE397DFf57'
+const CONTRACT = ''
 
 
 export default function Content({ref}) {
@@ -97,7 +97,7 @@ const Nav = ({ref}) => {
       {/* <motion.div className='flex flex-col gap-2' variants={sectionEaseInAnimation} initial='hidden' animate='visible' whileInView='visible' viewport={{ margin: '2250px' }} > */}
       <motion.div className='flex flex-col gap-2 w-1/2 sm:w-auto ' style={{x:X_OFFSET_COLUMN_1, opacity:opacity, scale: scale}} >
       <h3 className='mb-2 uppercase text-[#ffffff80]'>About</h3>
-        <Link className='animate-bounce font-bold' href='https://www.youtube.com/' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
+        <Link className='animate-bounce font-bold' href='https://www.youtube.com/playlist?list=PLmZab0RJaLQz21vpeltsc8Q23bSCZuK8K' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
         <button className='text-left font-bold' onClick={()=>copyToClipboard(CONTRACT)}>
           Copy CA
         </button>
