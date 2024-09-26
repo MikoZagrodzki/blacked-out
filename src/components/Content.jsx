@@ -22,9 +22,17 @@ const CONTRACT = ''
 
 export default function Content({ref}) {
   const forwardedRef = useRef(ref)
+  const { isSmallScreen, windowSize } = useScreenSize(600);
+  const { scrollYProgress } = useScroll({
+      target: forwardedRef,
+      offset: ['start end', 'end start']
+  })
+  const opacity = isSmallScreen?useTransform(scrollYProgress, [0.44,  0.55], ['0%', '100%']):useTransform(scrollYProgress, [0.5,  0.6], ['0%', '100%']);
+
   return (
-    <div className='bg-[#ec7804] text-black px-12 h-full w-full flex flex-col justify-end gap-20  sm:gap-0 sm:justify-between relative overflow-x-clip'>
+    <div className='bg-[#ec7804] text-black  h-full w-full flex flex-col justify-end gap-0 sm:justify-between relative overflow-x-clip'>
         <Section1 forwardedRef={ref}/>
+        <motion.h1 style={{opacity:opacity}} className='text-center text-xs uppercase font-custom font-bold px-2 md:text-xl xl:text-2xl sm:pb-4'>An orange-like character in surreal memes, rival to Meme Man. Known for deception and untrustworthiness, he seeks power and once stole the Octahedron of Transcendence.<br></br>Orang can transform into a car and rotate numbers. His unclear motives and shape-shifting abilities make him a complex antagonist in the bizarre world of surreal memes.</motion.h1>
         <Section2 />
     </div>
   )
@@ -33,7 +41,7 @@ export default function Content({ref}) {
 const Section1 = ({ ref }) => {
   const forwardedRef = useRef(ref)
   return (
-    <div className='pt-20 mt-20 h-2/3 justify-center flex items-end sm:items-start'>
+    <div className='pt-20 mt-20 h-2/3 justify-center flex items-end sm:items-start px-12'>
       {/* <Nav ref={forwardedRed}/> */}
       <Nav ref={forwardedRef}/>
     </div>
