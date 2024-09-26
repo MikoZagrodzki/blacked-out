@@ -32,7 +32,7 @@ export default function Content({ref}) {
   return (
     <div className='bg-[#ec7804] text-black  h-full w-full flex flex-col justify-end gap-0 sm:justify-between relative overflow-x-clip'>
         <Section1 forwardedRef={ref}/>
-        <motion.h1 style={{opacity:opacity}} className='text-center text-xs uppercase font-custom font-bold px-2 md:text-xl xl:text-2xl sm:pb-4'>An orange-like character in surreal memes, rival to Meme Man. Known for deception and untrustworthiness, he seeks power and once stole the Octahedron of Transcendence.<br></br>Orang can transform into a car and rotate numbers. His unclear motives and shape-shifting abilities make him a complex antagonist in the bizarre world of surreal memes.</motion.h1>
+        <motion.h1 style={{opacity:opacity}} className='text-center text-xs uppercase font-custom font-bold px-2 md:text-xl xl:text-2xl sm:pb-4'>An orange-like character in surreal memes, rival to Meme Man. Known for deception and <s>untrustworthiness</s>, he seeks power and once stole the Octahedron of Transcendence.<br></br>Orang can transform into a car and rotate numbers. His unclear motives and shape-shifting abilities make him a complex antagonist in the bizarre world of surreal memes.</motion.h1>
         <Section2 />
     </div>
   )
@@ -101,12 +101,12 @@ const Nav = ({ref}) => {
 
 //fav
   return (
-    <div className='flex shrink-0 gap-20 sm:gap-40 mb-10 sm:mb-0 lg:mt-10 w-full '>
+    <div className='flex shrink-0 gap-20 sm:gap-40 mb-10 sm:mb-0 lg:mt-10 w-full uppercase'>
       {/* <motion.div className='flex flex-col gap-2' variants={sectionEaseInAnimation} initial='hidden' animate='visible' whileInView='visible' viewport={{ margin: '2250px' }} > */}
       <motion.div className='flex flex-col gap-2 w-1/2 sm:w-auto ' style={{x:X_OFFSET_COLUMN_1, opacity:opacity, scale: scale}} >
       <h3 className='mb-2 uppercase text-[#ffffff80]'>About</h3>
-        <Link className='animate-bounce font-bold' href='https://www.youtube.com/playlist?list=PLmZab0RJaLQz21vpeltsc8Q23bSCZuK8K' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
-        <button className='text-left font-bold' onClick={()=>copyToClipboard(CONTRACT)}>
+        <Link className='animate-bounce font-bold ' href='https://www.youtube.com/playlist?list=PLmZab0RJaLQz21vpeltsc8Q23bSCZuK8K' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
+        <button className='text-left font-bold uppercase ' onClick={()=>copyToClipboard(CONTRACT)}>
           Copy CA
         </button>
       </motion.div>
