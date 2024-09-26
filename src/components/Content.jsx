@@ -27,7 +27,7 @@ export default function Content({ref}) {
       target: forwardedRef,
       offset: ['start end', 'end start']
   })
-  const opacity = isSmallScreen?useTransform(scrollYProgress, [0.44,  0.55], ['0%', '100%']):useTransform(scrollYProgress, [0.5,  0.6], ['0%', '100%']);
+  const opacity = useTransform(scrollYProgress, isSmallScreen?[0.44,  0.55]:[0.5,  0.6], ['0%', '100%']);
 
   return (
     <div className='bg-[#ec7804] text-black  h-full w-full flex flex-col justify-end gap-0 sm:justify-between relative overflow-x-clip'>
