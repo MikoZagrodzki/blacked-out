@@ -58,4 +58,6 @@ h1, h2{
   /* Optional: Add support for specific browsers */
   -moz-text-align-last: center;
   -webkit-text-align-last: center;
+  text-shadow: 1px 1px 2px white;
+  /* text-shadow: rgb(246, 246, 244) 1px 0 10px; */
 }

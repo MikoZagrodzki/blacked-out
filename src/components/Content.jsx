@@ -32,7 +32,7 @@ export default function Content({ref}) {
   return (
     <div className='bg-[#ec7804] text-black  h-full w-full flex flex-col justify-end gap-0 sm:justify-between relative overflow-x-clip'>
         <Section1 forwardedRef={ref}/>
-        <motion.h1 style={{opacity:opacity}} className='justified-text text-xs uppercase font-custom font-bold px-2 md:text-xl xl:text-2xl sm:pb-4'>An orange-like character in surreal memes, rival to Meme Man. Known for deception and <s>untrustworthiness</s>, he seeks power and once stole the Octahedron of Transcendence.Orang can transform into a car and rotate numbers. His unclear motives and shape-shifting abilities make him a complex antagonist in the bizarre world of surreal memes.</motion.h1>
+        <motion.h1 style={{opacity:opacity}} className=' justified-text text-xs uppercase font-custom font-bold px-2 md:text-xl xl:text-2xl sm:pb-4'>An orange-like character in surreal memes, rival to Meme Man. Known for deception and <s>untrustworthiness</s>, he seeks power and once stole the Octahedron of Transcendence.Orang can transform into a car and rotate numbers. His unclear motives and shape-shifting abilities make him a complex antagonist in the bizarre world of surreal memes.</motion.h1>
         <Section2 />
     </div>
   )
