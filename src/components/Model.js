@@ -4,7 +4,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 export default function Model({onLoad}) {
     // const { nodes } = useGLTF("/medias/torrus.glb");
-    const gltf = useGLTF("/medias/orang3d1.glb");
+    const gltf = useGLTF("/medias/gift.glb");
     const { viewport } = useThree()
     const torus = useRef(null);
     
@@ -46,10 +46,10 @@ export default function Model({onLoad}) {
     
     return (
         <group scale={viewport.width / 3.75} >
-            <Text font={'/fonts/PPNeueMontreal-Bold.otf'} position={[0, 0, -1]} fontSize={0.5} color="rgb(255,69,0)" anchorX="center" anchorY="middle">
-                $ORANG GANG
+            <Text font={'/fonts/PPNeueMontreal-Bold.otf'} position={[0, 0, -1]} fontSize={0.5} color="rgb(255,255,255)" anchorX="center" anchorY="middle"  maxWidth={5} textAlign="center">
+            STEALTH LAUNCH ON MONDAY.. STAY TUNED...
             </Text>
-            <mesh ref={torus} {...gltf.nodes['orang1']}>
+            <mesh ref={torus} {...gltf.nodes['gift']}>
                 <MeshTransmissionMaterial {...materialProps}/>
             </mesh>
             {/* <mesh

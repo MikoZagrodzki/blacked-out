@@ -12,9 +12,9 @@ import { useTransform, motion, useScroll, scrollYProgress } from 'framer-motion'
 
 const LINKS = [
   { title: 'Dextools', href: 'https://www.dextools.io/', icon:'/icons/dextools.png' },
-  { title: 'dexscreener', href: 'https://dexscreener.com/ethereum/', icon:'/icons/dexscreener.png' },
+  { title: 'dexscreener', href: 'https://dexscreener.com/', icon:'/icons/dexscreener.png' },
   { title: 'WeChat', href: 'https://www.wechat.com/', icon:'/icons/wechat.png' },
-  { title: 'TG', href: 'https://t.me/orangcoineth', icon:'/icons/telegram.png' },
+  { title: 'TG', href: 'https://t.me/', icon:'/icons/telegram.png' },
   { title: 'X', href: 'https://x.com/', icon:'/icons/x.png' },
 ];
 const CONTRACT = ''
@@ -30,9 +30,9 @@ export default function Content({ref}) {
   const opacity = useTransform(scrollYProgress, isSmallScreen?[0.44,  0.55]:[0.5,  0.6], ['0%', '100%']);
 
   return (
-    <div className='bg-[#ec7804] text-black  h-full w-full flex flex-col justify-end gap-0 sm:justify-between relative overflow-x-clip'>
+    <div className='bg-[#ffffff] text-black  h-full w-full flex flex-col justify-end gap-0 sm:justify-between relative overflow-x-clip'>
         <Section1 forwardedRef={ref}/>
-        <motion.h1 style={{opacity:opacity}} className=' justified-text text-xs uppercase font-custom font-bold px-2 md:text-xl xl:text-2xl sm:pb-4'>An orange-like character in surreal memes, rival to Meme Man. Known for deception and <s>untrustworthiness</s>, he seeks power and once stole the Octahedron of Transcendence.Orang can transform into a car and rotate numbers. His unclear motives and shape-shifting abilities make him a complex antagonist in the bizarre world of surreal memes.</motion.h1>
+        <motion.h1 style={{opacity:opacity}} className=' justified-text text-xs uppercase font-custom font-bold px-2 md:text-xl xl:text-2xl sm:pb-4'>An <span className=' bg-black px-10'>.</span> character in surreal memes, rival to <span className=' bg-black px-10'>.</span>. Known for <span className=' bg-black px-10'>.</span> and <span className=' bg-black px-10'>.</span>, he seeks power and once stole the <span className=' bg-black px-10'>.</span> of <span className=' bg-black px-10'>.</span>. <span className=' bg-black px-10'>.</span> can transform into a car and rotate numbers. His unclear motives and shape-shifting abilities make him a complex antagonist in the bizarre world of surreal memes.</motion.h1>
         <Section2 />
     </div>
   )
@@ -105,7 +105,7 @@ const Nav = ({ref}) => {
       {/* <motion.div className='flex flex-col gap-2' variants={sectionEaseInAnimation} initial='hidden' animate='visible' whileInView='visible' viewport={{ margin: '2250px' }} > */}
       <motion.div className='flex flex-col gap-2 w-1/2 sm:w-auto ' style={{x:X_OFFSET_COLUMN_1, opacity:opacity, scale: scale}} >
       <h3 className='mb-2 uppercase text-[#ffffff80]'>About</h3>
-        <Link className='animate-bounce font-bold ' href='https://www.youtube.com/playlist?list=PLmZab0RJaLQz21vpeltsc8Q23bSCZuK8K' target='_blank' alt='Whos ORANG'>Whos ORANG</Link>
+        <Link className='animate-bounce font-bold ' href='' target='_blank' alt='Whos '>Whos <span className=' bg-black px-10'>.</span></Link>
         <button className='text-left font-bold uppercase ' onClick={()=>copyToClipboard(CONTRACT)}>
           Copy CA
         </button>

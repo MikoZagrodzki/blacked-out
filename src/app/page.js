@@ -46,8 +46,8 @@ export default function Home() {
   return (
     <main ref={container} className={` ${scrollBar.hideScrollbar} overflow-x-clip `}>
       <Head>
-        <meta property='og:title' content='$ORANG' />
-        <title>$ORANG</title>
+        <meta property='og:title' content='STEALTH LAUNCH' />
+        <title>STEALTH LAUNCH</title>
         <meta property='og:image' content='/images/orang.png' />
         <link rel='icon' href='/favicon.png' />
       </Head>
