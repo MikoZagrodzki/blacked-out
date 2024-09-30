@@ -47,7 +47,7 @@ export default function Model({onLoad}) {
     return (
         <group scale={viewport.width / 3.75} >
             <Text font={'/fonts/PPNeueMontreal-Bold.otf'} position={[0, 0, -1]} fontSize={0.5} color="rgb(255,255,255)" anchorX="center" anchorY="middle"  maxWidth={5} textAlign="center">
-            STEALTH LAUNCH ON MONDAY.. STAY TUNED...
+            STEALTH LAUNCH TODAY 20:00HRS UTC.. STAY TUNED...
             </Text>
             <mesh ref={torus} {...gltf.nodes['gift']}>
                 <MeshTransmissionMaterial {...materialProps}/>
